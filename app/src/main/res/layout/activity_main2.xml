@@ -209,7 +209,8 @@
                 android:text="@string/facebookString"
                 android:textSize="14sp"
                 android:textColor="#103472"
-                android:paddingLeft="8dp"/>
+                android:paddingLeft="8dp"
+                android:onClick="goToSpinner"/>
         </LinearLayout>
 
 

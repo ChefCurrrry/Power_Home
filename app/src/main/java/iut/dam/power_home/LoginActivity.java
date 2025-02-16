@@ -63,4 +63,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Signup.class);
         startActivity(intent);
     }
+    public void goToSpinner(View view) {
+        Intent intent = new Intent(this, ItemCountryActivity.class);
+        startActivity(intent);
+    }
 }
