@@ -74,8 +74,8 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/email"
-                        android:inputType="textEmailAddress"/>
+                        android:id="@+id/emailInput"
+                        android:hint="@string/email" />
                 </LinearLayout>
 
                 <!-- Champ Mot de Passe avec Icône -->
@@ -94,6 +94,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/passwordInput"
                         android:hint="@string/password"
                         android:inputType="textPassword"/>
                 </LinearLayout>
@@ -114,6 +115,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/loginButton"
                     android:background="@color/orange"
                     android:text="@string/connect"
                     android:textColor="@android:color/white"
