@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Power_Home</string>
+    <string name="email">E-mail</string>
+    <string name="password">Mot de Passe</string>
+    <string name="signIn">Identifiez-vous</string>
+    <string name="forgotMdp">Mot de Passe oublié ?</string>
+    <string name="connect">Se Connecter</string>
+    <string name="newOnApp">Nouveau sur l\'Appli ?</string>
+    <string name="signUp">Créer un Compte</string>
+    <string name="connectTitle">Connexion</string>
+    <string name="signUpPage">Créer un Compte</string>
+    <string name="createNewAcct">Créer un nouveau Compte</string>
+    <string name="prenom">Prénom</string>
+    <string name="nom">Nom</string>
+    <string-array name="country_codes">
+        <item>+33</item>
+        <item>+1</item>
+        <item>+44</item>
+        <item>+49</item>
+        <item>+212</item>
+        <item>+225</item>
+    </string-array>
+    <string name="tel">Numéro de Téléphone</string>
+    <string name="inscrButton">S\'inscrire</string>
+    <string name="facebookString">Continuer avec Facebook</string>
+    <string name="enterApp">Entrer l\'Application</string>
+    <string name="welcome">BIENVENUE SUR LA MARMARA SPIKE LEAGUE APP</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="grey">#423D3D</color>
+    <color name="white">#FFFFFF</color>
+    <color name="orange">#ed8c3d</color>
+    <color name="blancCasse">#F4E7D5</color>
+    <color name="vertLogo">#045d40</color>
+</resources>
