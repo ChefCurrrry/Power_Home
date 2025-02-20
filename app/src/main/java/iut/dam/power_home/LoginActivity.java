@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             // Vérification des identifiants
             if (email.equals("abcd") && password.equals("EFGH")) {
                 // Redirection vers ProfileActivity avec les informations
-                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(LoginActivity.this, HabitatActivity.class);
                 intent.putExtra("EMAIL", email);
                 intent.putExtra("PASSWORD", password);
                 startActivity(intent);
