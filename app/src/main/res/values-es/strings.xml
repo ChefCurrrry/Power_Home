@@ -18,4 +18,6 @@
     <string name="facebookString">Continuar con Facebook</string>
     <string name="enterApp">Entrar en la aplicación</string>
     <string name="welcome">BIENVENIDO A LA APP MARMARA SPIKE LEAGUE</string>
+    <string name="navigation_drawer_open">Abrir el Menú</string>
+    <string name="navigation_drawer_close">Cerrar el Menú</string>
 </resources>
