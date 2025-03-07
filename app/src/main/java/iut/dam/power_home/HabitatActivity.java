@@ -1,8 +1,13 @@
 package iut.dam.power_home;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.os.Bundle;
-import androidx.activity.EdgeToEdge;
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -14,26 +19,34 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.material.navigation.NavigationView;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import iut.dam.power_home.frag.HomeFragment;
 import iut.dam.power_home.frag.SettingsFragment;
 
+
 public class HabitatActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
+    String urlString = "http://10.125.132.41/power_home/getHabitats.php";
+
+    ProgressDialog pDialog;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_habitat);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.habitatLayout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        getRemoteHabitats();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -90,6 +103,8 @@ public class HabitatActivity extends AppCompatActivity {
         HabitatAdapter adapter = new HabitatAdapter(habitats);
         recyclerView.setAdapter(adapter);
 
+
+
     }
 
     public void onBackPressed() {
@@ -99,4 +114,28 @@ public class HabitatActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+    public void getRemoteHabitats() {
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Getting list of habitats...");
+        pDialog.setIndeterminate(true);
+        pDialog.setCancelable(false);
+        pDialog.show();
+
+        Ion.with(this)
+                .load(urlString)
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        pDialog.dismiss();
+                        if(result == null)
+                            Log.d(TAG, "No response from the server!!!");
+                        else {
+                            Toast.makeText(HabitatActivity.this, result, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
 }
