@@ -30,10 +30,10 @@ public class HabitatAdapter extends RecyclerView.Adapter<HabitatAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Habitat habitat = items.get(position);
-        holder.nameTV.setText(habitat.getProprio());
-        holder.floor.setText(String.valueOf(habitat.getEtage()));
+        holder.nameTV.setText(habitat.user.lastName + " " + habitat.user.firstName);
+        holder.floor.setText(String.valueOf(habitat.floor));
         // Récupération du nombre d'équipements
-        int equipementCount = habitat.getEquipements().size();
+        int equipementCount = habitat.appliances.size();
 
         // Mettre à jour le texte du nombre d'équipements
         holder.equipementCountTV.setText(equipementCount + (equipementCount > 1 ? " équipements" : " équipement"));
@@ -42,16 +42,16 @@ public class HabitatAdapter extends RecyclerView.Adapter<HabitatAdapter.ViewHold
         holder.equipementContainer.removeAllViews();
 
         // Ajout dynamique des icônes d'équipements
-        for (int iconRes : habitat.getEquipements()) {
+        for (Appliance iconRes : habitat.appliances) {
             ImageView imageView = new ImageView(holder.itemView.getContext());
-            imageView.setImageResource(iconRes);
+            imageView.setImageResource(iconRes.getRef(iconRes.reference));
             imageView.setLayoutParams(new LinearLayout.LayoutParams(50, 50)); // Taille icône
             imageView.setPadding(4, 4, 4, 4);
             holder.equipementContainer.addView(imageView);
         }
 
         holder.itemView.setOnClickListener(view -> {
-            String message = "Propriétaire: " + habitat.getProprio();
+            String message = "Propriétaire: " + habitat.user.lastName + " " + habitat.user.firstName;
             Toast.makeText(view.getContext(), message, Toast.LENGTH_LONG).show();
         });
     }

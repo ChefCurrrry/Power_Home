@@ -4,25 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Habitat {
-    private String proprio;
-    private int etage;
-    private List<Integer> equipements;
 
-    public Habitat(String nom, List<Integer> equipement, int etage){
-        this.proprio = nom;
-        this.etage = etage;
-        this.equipements = equipement;
+    public int id;
+    public int floor;
+    public double area;
+    public User user;
+    public List<Appliance> appliances;
+
+    public Habitat() {
+        appliances = new ArrayList<>();
     }
 
-    public String getProprio() {
-        return proprio;
-    }
-
-    public int getEtage() {
-        return etage;
-    }
-
-    public List<Integer> getEquipements() {
-        return equipements;
+    public Habitat(int id, int floor, double area) {
+        this.id = id;
+        this.floor = floor;
+        this.area = area;
+        appliances = new ArrayList<>();
     }
 }

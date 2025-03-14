@@ -32,7 +32,8 @@ import iut.dam.power_home.frag.SettingsFragment;
 
 public class HabitatActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
-    String urlString = "http://10.125.132.41/power_home/getHabitats.php";
+    //ne pas oublier de changer l'adresse ip
+    String urlString = "http://10.125.134.64/power_home/getHabitats_v2.php?token=754d330b0871a361f20ffc981d03f6de";
 
     ProgressDialog pDialog;
     @SuppressLint("MissingInflatedId")
@@ -94,11 +95,57 @@ public class HabitatActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Habitat> habitats = new ArrayList<>();
-        habitats.add(new Habitat("Gaëtan Leclair", Arrays.asList(R.drawable.ic_aspirateur, R.drawable.ic_machine_a_laver, R.drawable.ic_fer_a_repasser, R.drawable.ic_climatiseur),1));
-        habitats.add(new Habitat("Cédric Boudet",  Arrays.asList(R.drawable.ic_aspirateur),2));
-        habitats.add(new Habitat("Gaylord Thibodeaux", Arrays.asList(R.drawable.ic_climatiseur, R.drawable.ic_machine_a_laver), 3));
-        habitats.add(new Habitat("Adam Jacquinot", Arrays.asList(R.drawable.ic_aspirateur, R.drawable.ic_machine_a_laver, R.drawable.ic_fer_a_repasser), 4));
-        habitats.add(new Habitat("Abel Fresnel", Arrays.asList(R.drawable.ic_machine_a_laver), 5));
+        Appliance aspi = new Appliance(1, "aspirateur", "ic_aspirateur", 10);
+        Appliance machineALaver = new Appliance(1, "machine à laver", "ic_machine_a_laver", 10);
+        Appliance fer = new Appliance(1, "fer à repasser", "ic_fer_a_repasser", 10);
+        Appliance climatiseur = new Appliance(1, "climatiseur", "ic_climatiseur", 10);
+        Habitat h1 = new Habitat(1,1,28);
+        List<Appliance> a1 = new ArrayList<>();
+
+        a1.add(aspi);
+        a1.add(machineALaver);
+        a1.add(fer);
+        a1.add(climatiseur);
+        h1.appliances=a1;
+        h1.user = new User(1, "Gaëtan", "Leclair", "gaetanleclair@gmail.com", "test", null, null);
+        habitats.add(h1);
+
+        Habitat h2 = new Habitat(2,2,28);
+        List<Appliance> a2 = new ArrayList<>();
+        a2.add(aspi);
+        h2.appliances=a2;
+        h2.user = new User(2, "Cédric", "Boudet", "cedricthibodeaux@gmail.com", "test", null, null);
+        habitats.add(h2);
+
+        Habitat h3 = new Habitat(3,3,28);
+        List<Appliance> a3 = new ArrayList<>();
+        a3.add(climatiseur);
+        a3.add(machineALaver);
+        h3.appliances = a3;
+        h3.user = new User(3, "Gaylord", "Thibodeaux", "gaylordthibodeaux@gmail.com", "test", null, null);
+        habitats.add(h3);
+
+        Habitat h4 = new Habitat(4,4,28);
+        List<Appliance> a4 = new ArrayList<>();
+        a4.add(aspi);
+        a4.add(machineALaver);
+        a4.add(fer);
+        h4.appliances = a4;
+        h4.user = new User(4, "Adam", "Jacquinot", "adamjacquinot@gmail.com", "test", null, null);
+        habitats.add(h4);
+
+        Habitat h5 = new Habitat(5,4,28);
+        List<Appliance> a5 = new ArrayList<>();
+        a5.add(machineALaver);
+        h5.appliances = a5;
+        h5.user = new User(5, "Adam", "Jacquinot", "adamjacquinot@gmail.com", "test", null, null);
+        habitats.add(h5);
+//        List<Habitat> habitats = new ArrayList<>();
+//        habitats.add(new Habitat(1, 2,1));
+//        habitats.add(new Habitat(2,  Arrays.asList(R.drawable.ic_aspirateur),2));
+//        habitats.add(new Habitat(3, Arrays.asList(R.drawable.ic_climatiseur, R.drawable.ic_machine_a_laver), 3));
+//        habitats.add(new Habitat(4, Arrays.asList(R.drawable.ic_aspirateur, R.drawable.ic_machine_a_laver, R.drawable.ic_fer_a_repasser), 4));
+//        habitats.add(new Habitat(5, Arrays.asList(R.drawable.ic_machine_a_laver), 5));
 
         HabitatAdapter adapter = new HabitatAdapter(habitats);
         recyclerView.setAdapter(adapter);
